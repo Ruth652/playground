@@ -1,6 +1,6 @@
 package models
 
 type Tasks struct {
-	ID    string `json:"id"`
-	Title string `json:"title"`
+	ID    string `bson:"_id,omitempty" json:"id"` // MongoDB will set this
+	Title string `bson:"title" json:"title"`
 }
