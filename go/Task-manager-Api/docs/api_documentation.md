@@ -1,6 +1,6 @@
 # Task Manager API Documentation
 
-This API allows you to manage tasks: create, read, update, and delete them.
+This API allows you to manage tasks: create, read, update, and delete them with register and login functionality.
 
 ---
 
@@ -10,9 +10,78 @@ http://localhost:8080
 
 ## Endpoints
 
+### 1. Register User
+
+POST /register
+
+**Description:**
+Register user
+
+Request Body Example:
+
+```json
+{
+  "username": "ruth",
+  "password": "password"
+}
+```
+
+Include role **admin** to create admin user
+
+```json
+{
+  "username": "ruth",
+  "password": "password",
+  "role": "admin"
+}
+```
+
+Response Body Example:
+
+```json
+{
+  "id": "uu984gr..",
+  "username": "ruth",
+  "role": "user"
+}
+```
+
+### 1. Login User
+
+POST /login
+
+**Description:**
+Login
+
+Request Body Example:
+
+```json
+{
+  "username": "ruth",
+  "Password": "password"
+}
+```
+
+Response Body Example:
+
+```json
+{
+  "message": "Login successfu",
+  "token": "eyJhbGciOiJIUzI1NiI....",
+  "id": "uu984gr..",
+  "username": "ruth",
+  "role": "user"
+}
+```
+
 ### 1. Get All Tasks
 
 GET /tasks
+
+```bash
+  Authorization: Bearer <JWT_TOKEN>
+  Content-Type: application/json
+```
 
 **Description:**  
 Retrieve a list of all tasks.
@@ -36,6 +105,11 @@ Status Codes:
 ### 2. Get Task by ID
 
 GET /tasks/:id
+
+```bash
+  Authorization: Bearer <JWT_TOKEN>
+  Content-Type: application/json
+```
 
 Description:
 Retrieve a single task by its ID.
@@ -68,6 +142,11 @@ Status Codes:
 
 POST /tasks
 
+```bash
+  Authorization: Bearer <JWT_TOKEN>
+  Content-Type: application/json
+```
+
 Description:
 Add a new task.
 
@@ -99,6 +178,11 @@ Status Codes:
 ### 4. Update a Task
 
 PUT /tasks/:id
+
+```bash
+  Authorization: Bearer <JWT_TOKEN>
+  Content-Type: application/json
+```
 
 Description:
 Update the title of an existing task. You only need to provide the title in the body.
@@ -143,6 +227,11 @@ Status Codes:
 ### 5. Delete a Task
 
 DELETE /tasks/:id
+
+```bash
+  Authorization: Bearer <JWT_TOKEN>
+  Content-Type: application/json
+```
 
 Description:
 Delete a task by its ID.

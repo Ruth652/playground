@@ -8,7 +8,7 @@ import (
 )
 
 // Get all tasks
-func GetTasks(c *gin.Context) {
+func GetAllTasks(c *gin.Context) {
 	tasks := data.GetAllTasks()
 	c.IndentedJSON(http.StatusOK, tasks)
 }
